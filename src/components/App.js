@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import './App.css';
 import Header from "./header"; 
 import AddContact from "./addContact";
 import ContactList from "./contactList";
 
-function App() {
+function App() { 
   const LOCAL_STORAGE_KEY = "contacts";
   const [contacts, setContacts] = useState([]);
   const addContactHandler = (contact) => {
@@ -30,9 +31,17 @@ function App() {
 
   return (
     <div className='ui container'>
+      <Router>
       <Header />
-      <AddContact addContactHandler={addContactHandler}/>
-      <ContactList contacts={contacts} getContactId = {removeContactHandler} />
+      <Switch>
+      <Route path='/add' exact component={AddContact} />
+      <Route path='/' Component={ContactList} />
+      </Switch>
+      
+      {/* <AddContact addContactHandler={addContactHandler}/>
+      <ContactList contacts={contacts} getContactId = {removeContactHandler} /> */}
+      </Router>
+      
     </div>
   );
 };
