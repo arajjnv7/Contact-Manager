@@ -8,7 +8,7 @@ const ContactList = (props) => {
     const contacts = [{
         id: "1",
         "name": "Aryan",
-        "email": "arajjnv7@gmail.com"
+        "email": "arajjnv7@gmail.com",
     }]
     const renderContactList = contacts.map((contact) => {
         return(
